@@ -1,0 +1,12 @@
+$color-navbar-background: #212121;
+$color-navbar-text: #fff;
+
+.footer{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding:5px;
+  background: $color-navbar-background;
+  color: $color-navbar-text;
+}
