@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DietComponent } from './components/diet/diet.component';
 import { dietRoutes } from './components/diet/diet.router';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 export const appRoutes: Routes = [
   {
@@ -11,8 +12,7 @@ export const appRoutes: Routes = [
     children: dietRoutes
   },
   { path: '',
-    redirectTo: '/diet',
-    pathMatch: 'full'
+    component: LandingPageComponent,
   },
   { path: '**', component: PageNotFoundComponent }
 ];
