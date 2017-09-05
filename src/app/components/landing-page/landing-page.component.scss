@@ -23,5 +23,28 @@
 }
 
 .card{
+  min-width:47.5%;
+  margin:2.5%;
+  flex: 1;
+  border: 5px solid white;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+
+  &:first-child{
+    min-width:100%;
+    margin: 0 0 2.5% 0;
+  }
+
+  &:nth-child(even){
+    margin-left: 0;
+  }
+
+  &:nth-child(odd){
+    margin-right: 0;
+  }
+}
+
+.cards{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }

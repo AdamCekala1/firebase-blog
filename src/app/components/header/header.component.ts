@@ -6,6 +6,4 @@ import 'rxjs/add/operator/debounceTime';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent{
-
-}
+export class HeaderComponent {}
