@@ -1,0 +1,50 @@
+@import '../../config';
+
+$color-box-shadow: #DFDFDF;
+
+.card{
+  &-body{
+    padding: 20px;
+    margin: 0;
+
+    &:first-child{
+      border-bottom: 2px solid $color-box-shadow;
+    }
+
+    &:nth-child(2),&:last-child{
+      border-top: 2px solid lighten($color-box-shadow, 25%);
+    }
+
+    &:nth-child(2){
+      border-bottom: 2px solid $color-box-shadow;
+    }
+
+    @media (min-width: $col-md){
+      margin: 20px 0;
+
+      &:nth-child(2),&:last-child{
+        border-top: none;
+      }
+
+      &:nth-child(2){
+        border-bottom: none;
+        border-right: 2px solid lighten($color-box-shadow, 25%);
+      }
+
+      &:last-child{
+        border-left: 2px solid $color-box-shadow;
+      }
+    }
+
+    @media (min-width: $col-lg){
+      &:first-child{
+        border-bottom: none;
+        border-right: 2px solid $color-box-shadow;
+      }
+
+      &:nth-child(2){
+        border-left: 2px solid lighten($color-box-shadow, 25%);
+      }
+    }
+  }
+}

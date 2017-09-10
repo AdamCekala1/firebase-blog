@@ -1,3 +1,14 @@
-.content{
-  padding: 20px 0;
+@import './config';
+
+.row{
+  background: $color-bg;
+}
+
+.container{
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+.remove-padding{
+  padding: 0;
 }

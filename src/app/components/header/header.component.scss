@@ -1,3 +1,57 @@
-nav{
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+@import '../../config';
+
+.vertical-nav{
+  min-height: 50px;
+  position: relative;
+
+  @media (min-width: 768px) {
+    .collapse {
+      display: block;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding-top: 50px;
+    height: 100vh;
+    position: fixed;
+    width: 190px;
+  }
+
+  &-item{
+    width: 100%;
+  }
+
+  &-link{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    color: $color-text;
+
+    h6{
+      margin: 0;
+    }
+
+    &:hover{
+      background: $color-hover;
+    }
+  }
+
+  &-icon{
+    font-size: 16px;
+    padding-right: 15px;
+  }
+}
+
+.hidden-md-up{
+  @media (min-width: 768px){
+    display: none;
+  }
+}
+
+.active{
+  color: $color-motive;
+
+  &:hover{
+    background: none;
+  }
 }

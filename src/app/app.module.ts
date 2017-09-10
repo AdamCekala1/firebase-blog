@@ -4,6 +4,8 @@ import {ModalModule} from 'ngx-bootstrap';
 
 import {AppComponent} from './app.component';
 import {appRoutes} from './app.router';
+import {CalculatorModule} from './components/calculator/calculator.module';
+import {CoreModule} from './core/core.module';
 import {DietModule} from './components/diet/diet.module';
 import {LandingPageModule} from './components/landing-page/landing-page.module';
 import {SharedModule} from './shared/shared.module';
@@ -13,15 +15,15 @@ import {SharedModule} from './shared/shared.module';
     AppComponent
   ],
   imports: [
-    SharedModule,
-    ModalModule.forRoot(),
+    CalculatorModule,
+    CoreModule,
     DietModule,
     LandingPageModule,
-    RouterModule.forRoot(appRoutes, {useHash: true})
+    ModalModule.forRoot(),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

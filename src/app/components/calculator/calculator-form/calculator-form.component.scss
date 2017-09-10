@@ -1,0 +1,23 @@
+.row{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+input{
+  max-width:100px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  border-bottom: 2px solid gray;
+
+  &:focus{
+    outline: none;
+    background: none;
+  }
+}
+
+label{
+  padding: 0 10px;
+}
+

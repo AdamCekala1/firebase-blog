@@ -1,0 +1,117 @@
+<form [formGroup]="calculatorForm"
+      novalidate>
+  <div class="form-group row">
+    <label>Mężczyzna</label>
+    <input class=" form-control"
+           type="checkbox"
+           formControlName="isMen">
+    <label>Kobieta</label>
+  </div>
+  <div class="form-group row">
+    <label>Waga</label>
+    <input class="form-control"
+           placeholder="weigth"
+           formControlName="weigth">
+    <label>kg</label>
+  </div>
+  <div class="form-group row">
+    <label>heigth</label>
+    <input class="form-control"
+           placeholder="heigth"
+           formControlName="heigth">
+    <label>cm</label>
+  </div>
+  <div class="form-group row">
+    <div class="btn-group"
+         dropdown>
+      <button class="form-control dropdownToggle"
+              dropdownToggle
+              type="button">
+        Build type <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <div *dropdownMenu class="dropdown-menu" role="menu">
+        <div class="list-group">
+          <a *ngFor="let type of bodyTypesStringArray"
+             class="list-group-item list-group-item-action">
+            {{getBodyTypeReadable(type)}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  Trening:
+  <div class="form-group row">
+    <label>Aeroby</label>
+    <input class="form-control"
+           placeholder="aeroTime"
+           formControlName="aeroTime">
+    <label>min</label>
+    <div class="form-group row">
+      <div class="btn-group"
+           dropdown>
+        <button class="form-control dropdownToggle"
+                dropdownToggle
+                type="button">
+          How offen <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </button>
+        <div *dropdownMenu class="dropdown-menu" role="menu">
+          <div class="list-group">
+            <a *ngFor="let type of periodTypesStringArray"
+               class="list-group-item list-group-item-action">
+              {{getPeriodReadable(type)}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="btn-group"
+           dropdown>
+        <button class="form-control dropdownToggle"
+                dropdownToggle
+                type="button">
+          How intens. <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </button>
+        <div *dropdownMenu class="dropdown-menu" role="menu">
+          <div class="list-group">
+            <a *ngFor="let type of intensityTypesStringArray"
+               class="list-group-item list-group-item-action">
+              {{getIntensityReadable(type)}}
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>
+  <button type="button"
+          class="btn btn-primary">
+    Add another aerob activity
+  </button>
+  <div class="form-group row">
+    <label>Siłownia</label>
+    <input class="form-control"
+           placeholder="gymTime"
+           formControlName="gymTime">
+    <label>min</label>
+    <div class="btn-group"
+         dropdown>
+      <button class="form-control dropdownToggle"
+              dropdownToggle
+              type="button">
+        How offen <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <div *dropdownMenu class="dropdown-menu" role="menu">
+        <div class="list-group">
+          <a *ngFor="let type of periodTypesStringArray"
+             class="list-group-item list-group-item-action">
+            {{getPeriodReadable(type)}}
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <button type="submit"
+          class="btn btn-success">
+    Pokaz kcal!
+  </button>
+</form>
