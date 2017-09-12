@@ -1,6 +1,14 @@
+@import '../../config';
+
 button {
   position: relative;
   overflow: hidden;
+  background: $color-motive;
+  border: none;
+
+  &:hover{
+    background: lighten($color-motive, 5%);
+  }
 }
 
 button:after {
@@ -13,7 +21,7 @@ button:after {
   height: 120px;
   margin-left: -60px;
   margin-top: -60px;
-  background: green;
+  background: $color-motive;
   border-radius: 100%;
   opacity: .6;
 

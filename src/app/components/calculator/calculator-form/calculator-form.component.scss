@@ -1,8 +1,6 @@
-.row{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+@import '../../../config';
+
+$color-placeholder: $color-motive;
 
 input{
   max-width:100px;
@@ -21,3 +19,46 @@ label{
   padding: 0 10px;
 }
 
+.calculator{
+  &-item{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+  }
+
+  &-input{
+    position: relative;
+  }
+}
+
+.custom-placeholder{
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  font-size: 10px;
+  left: 50%;
+  display: block;
+  bottom: -15px;
+  transform: translate(-50%);
+  color: $color-placeholder;
+  font-weight: 700;
+  opacity: 0.5;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+input:focus+.custom-placeholder{
+  opacity: 1;
+  left: -7px;
+  transform: translate(-50%);
+  top: -14px;
+}
+
+.active{
+  background: red;
+}

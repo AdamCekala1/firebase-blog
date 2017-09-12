@@ -7,9 +7,9 @@ export class CONSTANTS {
   };
 
   public static periodsReadable = {
-    [periodType.DAY]: 'Dzien',
-    [periodType.WEEK]: 'Tydzien',
-    [periodType.MONTH]: 'Miesiąc'
+    [periodType.DAY]: 'Dziennie',
+    [periodType.WEEK]: 'Tygodniowo',
+    [periodType.MONTH]: 'Miesięcznie'
   };
 
   public static bodyTypeReadable = {
@@ -19,8 +19,8 @@ export class CONSTANTS {
   };
 
   public static intensitTypeReadable = {
-    [intensityType.LIGHT]: 'Lekka',
-    [intensityType.MEDIUM]: 'Srednia',
-    [intensityType.HARD]: 'Wysoka',
+    [intensityType.LIGHT]: 'Lekkie',
+    [intensityType.MEDIUM]: 'Srednie',
+    [intensityType.HARD]: 'Ciężkie',
   };
 }

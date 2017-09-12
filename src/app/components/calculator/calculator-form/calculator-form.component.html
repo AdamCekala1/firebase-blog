@@ -1,117 +1,134 @@
 <form [formGroup]="calculatorForm"
+      class="calculator"
       novalidate>
-  <div class="form-group row">
+  <div class="form-group calculator-item">
     <label>Mężczyzna</label>
     <input class=" form-control"
+           [ngModel]="userInformation.isMen"
            type="checkbox"
            formControlName="isMen">
     <label>Kobieta</label>
   </div>
-  <div class="form-group row">
+  <div class="form-group calculator-item">
     <label>Waga</label>
-    <input class="form-control"
+    <div class="calculator-input">
+      <input class="form-control"
            placeholder="weigth"
            formControlName="weigth">
+      <p class="custom-placeholder">Heigth</p>
+    </div>
     <label>kg</label>
   </div>
-  <div class="form-group row">
-    <label>heigth</label>
-    <input class="form-control"
-           placeholder="heigth"
-           formControlName="heigth">
+  <div class="form-group calculator-item">
+    <label>Wysokość</label>
+    <div class="calculator-input">
+      <input class="form-control"
+             placeholder="heigth"
+             formControlName="heigth">
+      <p class="custom-placeholder">Heigth</p>
+    </div>
     <label>cm</label>
   </div>
-  <div class="form-group row">
-    <div class="btn-group"
-         dropdown>
-      <button class="form-control dropdownToggle"
-              dropdownToggle
-              type="button">
-        Build type <i class="fa fa-caret-down" aria-hidden="true"></i>
-      </button>
-      <div *dropdownMenu class="dropdown-menu" role="menu">
-        <div class="list-group">
-          <a *ngFor="let type of bodyTypesStringArray"
-             class="list-group-item list-group-item-action">
-            {{getBodyTypeReadable(type)}}
-          </a>
-        </div>
-      </div>
-    </div>
+  <div class="form-group calculator-item">
+    <button *ngFor="let type of bodyTypesStringArray"
+            [ngClass]="userBuildTypeClass(type)"
+            (click)="builTypeHandler(type)"
+            class="list-group-item list-group-item-action">
+      {{getBodyTypeReadable(type)}}
+    </button>
   </div>
   Trening:
-  <div class="form-group row">
+  <div class="form-group calculator-item jumbotron">
     <label>Aeroby</label>
-    <input class="form-control"
-           placeholder="aeroTime"
-           formControlName="aeroTime">
-    <label>min</label>
-    <div class="form-group row">
-      <div class="btn-group"
-           dropdown>
-        <button class="form-control dropdownToggle"
-                dropdownToggle
-                type="button">
-          How offen <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </button>
-        <div *dropdownMenu class="dropdown-menu" role="menu">
-          <div class="list-group">
-            <a *ngFor="let type of periodTypesStringArray"
-               class="list-group-item list-group-item-action">
-              {{getPeriodReadable(type)}}
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="calculator-input">
+      <input class="form-control"
+             placeholder="aeroTime"
+             formControlName="aeroTime">
+      <p class="custom-placeholder">Heigth</p>
     </div>
-    <div class="form-group row">
-      <div class="btn-group"
-           dropdown>
-        <button class="form-control dropdownToggle"
-                dropdownToggle
-                type="button">
-          How intens. <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </button>
-        <div *dropdownMenu class="dropdown-menu" role="menu">
-          <div class="list-group">
-            <a *ngFor="let type of intensityTypesStringArray"
-               class="list-group-item list-group-item-action">
-              {{getIntensityReadable(type)}}
-            </a>
-          </div>
-        </div>
-      </div>
-  </div>
-  <button type="button"
-          class="btn btn-primary">
-    Add another aerob activity
-  </button>
-  <div class="form-group row">
-    <label>Siłownia</label>
-    <input class="form-control"
-           placeholder="gymTime"
-           formControlName="gymTime">
     <label>min</label>
     <div class="btn-group"
          dropdown>
       <button class="form-control dropdownToggle"
               dropdownToggle
               type="button">
-        How offen <i class="fa fa-caret-down" aria-hidden="true"></i>
+        {{getPeriodReadableActive(singleAerobicActivity.aerobicTraining.period)}} <i class="fa fa-caret-down" aria-hidden="true"></i>
       </button>
       <div *dropdownMenu class="dropdown-menu" role="menu">
         <div class="list-group">
           <a *ngFor="let type of periodTypesStringArray"
+             (click)="addPeriod('aerobicTraining', type)"
              class="list-group-item list-group-item-action">
             {{getPeriodReadable(type)}}
           </a>
         </div>
       </div>
     </div>
+    <div class="btn-group"
+         dropdown>
+      <button class="form-control dropdownToggle"
+              dropdownToggle
+              type="button">
+        {{getIntensityReadableActive(singleAerobicActivity.aerobicTraining.intensity)}} <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <div *dropdownMenu class="dropdown-menu" role="menu">
+        <div class="list-group">
+          <a *ngFor="let type of intensityTypesStringArray"
+             (click)="addAeorbicIntensity(type)"
+             class="list-group-item list-group-item-action">
+            {{getIntensityReadable(type)}}
+          </a>
+        </div>
+      </div>
+    </div>
+    <button type="button"
+            (click)="addAnotherAero()"
+            class="btn btn-primary calculator-item">
+      Add another aerob activity
+    </button>
+  </div>
+  <ng-container *ngIf="userInformation.aerobicTraining.length">
+    <ul>
+      <li *ngFor="let activity of userInformation.aerobicTraining">
+        {{activity.time}}, {{activity.period}}, {{activity.intensity}}
+      </li>
+    </ul>
+  </ng-container>
+  <div class="form-group calculator-item">
+    <label>Siłownia</label>
+    <div class="calculator-input">
+      <input class="form-control"
+             placeholder="gymTime"
+             formControlName="gymTime">
+      <p class="custom-placeholder">Heigth</p>
+    </div>
+    <label>min</label>
+    <div class="btn-group"
+         dropdown>
+      <button class="form-control dropdownToggle"
+              dropdownToggle
+              type="button">
+        {{getPeriodReadableActive(singleAerobicActivity.gymTraining.period)}} <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <div *dropdownMenu class="dropdown-menu" role="menu">
+        <div class="list-group">
+          <a *ngFor="let type of periodTypesStringArray"
+             (click)="addPeriod('gymTraining',type)"
+             class="list-group-item list-group-item-action">
+            {{getPeriodReadable(type)}}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
+  <button type="button"
+          (click)="addAnotherGym()"
+          class="btn btn-primary calculator-item">
+    Add another gym activity
+  </button>
   <button type="submit"
           class="btn btn-success">
     Pokaz kcal!
   </button>
 </form>
+
