@@ -1,10 +1,11 @@
+import {AlertModule} from 'ngx-alerts';
+import {BsDropdownModule} from 'ngx-bootstrap';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap/modal';
-import { BsDropdownModule } from 'ngx-bootstrap';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
@@ -18,6 +19,7 @@ import {PageNotFoundComponent} from '../components/page-not-found/page-not-found
 @NgModule({
   imports: [
     AngularFireDatabaseModule,
+    AlertModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
     CommonModule,
@@ -28,6 +30,7 @@ import {PageNotFoundComponent} from '../components/page-not-found/page-not-found
     RouterModule
   ],
   exports: [
+    AlertModule,
     BrowserModule,
     CommonModule,
     FooterComponent,

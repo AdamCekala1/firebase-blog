@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import {Component, OnInit} from '@angular/core';
 
-import { Post } from '../../shared/posts.interface';
+import {Post} from '../../shared/posts.interface';
+import {HttpService} from '../../core/http/http.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -11,15 +11,11 @@ import { Post } from '../../shared/posts.interface';
 export class LandingPageComponent implements OnInit {
   lastPosts: Post[] = [];
 
-  constructor(private angularFireDatabase: AngularFireDatabase) {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.angularFireDatabase.list('posts', { query: {
-      limitToLast: 9,
-      orderByKey: true
-    }}).subscribe((posts: Post[]) => {
+    this.httpService.getData('posts').subscribe((posts: Post[]) => {
       this.lastPosts = posts.reverse();
     });
   }
-
 }

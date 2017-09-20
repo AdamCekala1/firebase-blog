@@ -1,34 +1,21 @@
 <div class="card">
   <div class="row">
-    <div class="card-body col-xs-12 col-md-12 col-lg-4">
+    <div class="card-body col-xs-12 col-md-12">
       Wskaźnik podstawowej przemiany materii - BMR
     </div>
-    <div class="card-body col-xs-12 col-md-6 col-lg-4">
-      <c-form></c-form>
-      - kobieta/ mezczyzna (select przesuwny)
-      - waga kg (input)
-      - wzrost (input)
-      - wiek (input)
-      - endomorfik / ektomorfik / mezomorfik (select)
-      - minuty aerobow (input) (select ->) (dziennie / tygodniowo / miesiecznie) (select ->) (intensywnosc lekka/srednia/wysoka) (add new)
-      - minuty siowego (input) (select ->) (dziennie / tygodniowo / miesiecznie)
-
+    <div class="card-body col-xs-12 col-md-6">
+      <c-form (onCalculate)="setCalories($event)"></c-form>
     </div>
-    <div class="card-body col-xs-12 col-md-6 col-lg-4">
-      Wynik
+    <div class="card-body col-xs-12 col-md-6">
+      Wyliczone wartości na dzień aktywności:
+      <ng-container *ngIf="allCalories">
+        bmr: {{allCalories.bmr}} kcal <br />
+        z wysiłku aerobowego: {{allCalories.teaAero}} kcal <br />
+        z wysiłku siłowego: {{allCalories.teaGym}} kcal <br />
+        neat: {{allCalories.neat}} kcal <br />
+        tef:  {{allCalories.tef}} kcal <br />
+        === {{allCalories.all}} kcal <br />
+      </ng-container>
     </div>
   </div>
 </div>
-
-
-1. Podstawową przemianę materii(BMR):
-BMR = (9.99 X 60 (kg)) + (6.25 X 180 (cm)) - (4.92 X 20) + 5 = 1631 kcal
-2. Kalorię spalone podczas aktywności fizycznej(TEA):
-Trening siłowy - 3 x 45 min x 9 + EPOC(3 x (7% z 1631 = 114)) = 1558 kcal
-3. Wynik z punktu 2 dzielimy przez 7(dni tygodnia) = 223 kcal
-4. Sumujemy wyniki z punktu 1 i 3:
-(BMR)1631 kcal + (TEA)223 kcal = 1854 kcal
-5. Dodajemy NEAT:
-1854 kcal + 900 kcal = 2754 kcal
-6. Doliczamy efekt termiczny pożywienia (TEF)
-2754 + TEF(10% z 2754 = 275) = 2754 + 275 = 3029 kcal

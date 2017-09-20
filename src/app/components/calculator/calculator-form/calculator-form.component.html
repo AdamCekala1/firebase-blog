@@ -10,12 +10,26 @@
     <label>Kobieta</label>
   </div>
   <div class="form-group calculator-item">
+    <label>Wiek</label>
+    <div class="calculator-input">
+      <input class="form-control"
+             placeholder="Wiek"
+             [ngClass]="{'invalid': !checkIsValid('age')}"
+             type="number"
+             formControlName="age">
+      <p class="custom-placeholder">Wiek</p>
+    </div>
+    <label>lat</label>
+  </div>
+  <div class="form-group calculator-item">
     <label>Waga</label>
     <div class="calculator-input">
       <input class="form-control"
-           placeholder="weigth"
-           formControlName="weigth">
-      <p class="custom-placeholder">Heigth</p>
+             placeholder="Waga"
+             type="number"
+             [ngClass]="{'invalid': !checkIsValid('weigth')}"
+             formControlName="weigth">
+      <p class="custom-placeholder">Waga</p>
     </div>
     <label>kg</label>
   </div>
@@ -23,9 +37,11 @@
     <label>Wysokość</label>
     <div class="calculator-input">
       <input class="form-control"
-             placeholder="heigth"
-             formControlName="heigth">
-      <p class="custom-placeholder">Heigth</p>
+             type="number"
+             [ngClass]="{'invalid': !checkIsValid('height')}"
+             placeholder="Wysokość"
+             formControlName="height">
+      <p class="custom-placeholder">Wysokość</p>
     </div>
     <label>cm</label>
   </div>
@@ -42,9 +58,10 @@
     <label>Aeroby</label>
     <div class="calculator-input">
       <input class="form-control"
-             placeholder="aeroTime"
-             formControlName="aeroTime">
-      <p class="custom-placeholder">Heigth</p>
+             type="number"
+             placeholder="Czas"
+             formControlName="aerobicTraining">
+      <p class="custom-placeholder">Czas aerobów</p>
     </div>
     <label>min</label>
     <div class="btn-group"
@@ -52,12 +69,16 @@
       <button class="form-control dropdownToggle"
               dropdownToggle
               type="button">
-        {{getPeriodReadableActive(singleAerobicActivity.aerobicTraining.period)}} <i class="fa fa-caret-down" aria-hidden="true"></i>
+        {{getPeriodReadableActive(singleActivity.aerobicTraining.period)}}
+        <i class="fa fa-caret-down"
+           aria-hidden="true">
+        </i>
       </button>
-      <div *dropdownMenu class="dropdown-menu" role="menu">
+      <div *dropdownMenu class="dropdown-menu"
+           role="menu">
         <div class="list-group">
           <a *ngFor="let type of periodTypesStringArray"
-             (click)="addPeriod('aerobicTraining', type)"
+             (click)="addPeriod(type, 'aerobicTraining')"
              class="list-group-item list-group-item-action">
             {{getPeriodReadable(type)}}
           </a>
@@ -69,12 +90,15 @@
       <button class="form-control dropdownToggle"
               dropdownToggle
               type="button">
-        {{getIntensityReadableActive(singleAerobicActivity.aerobicTraining.intensity)}} <i class="fa fa-caret-down" aria-hidden="true"></i>
+        {{getIntensityReadableActive(singleActivity.aerobicTraining.intensity)}}
+        <i class="fa fa-caret-down"
+           aria-hidden="true"></i>
       </button>
-      <div *dropdownMenu class="dropdown-menu" role="menu">
+      <div *dropdownMenu class="dropdown-menu"
+           role="menu">
         <div class="list-group">
           <a *ngFor="let type of intensityTypesStringArray"
-             (click)="addAeorbicIntensity(type)"
+             (click)="addIntensity(type, 'aerobicTraining')"
              class="list-group-item list-group-item-action">
             {{getIntensityReadable(type)}}
           </a>
@@ -82,15 +106,15 @@
       </div>
     </div>
     <button type="button"
-            (click)="addAnotherAero()"
+            (click)="addAnotherActivity('aerobicTraining')"
             class="btn btn-primary calculator-item">
-      Add another aerob activity
+      Dodaj aktywność
     </button>
   </div>
   <ng-container *ngIf="userInformation.aerobicTraining.length">
     <ul>
       <li *ngFor="let activity of userInformation.aerobicTraining">
-        {{activity.time}}, {{activity.period}}, {{activity.intensity}}
+        {{readActivity(activity)}}
       </li>
     </ul>
   </ng-container>
@@ -98,9 +122,10 @@
     <label>Siłownia</label>
     <div class="calculator-input">
       <input class="form-control"
-             placeholder="gymTime"
-             formControlName="gymTime">
-      <p class="custom-placeholder">Heigth</p>
+             type="number"
+             placeholder="Czas"
+             formControlName="gymTraining">
+      <p class="custom-placeholder">Czas na siłowni</p>
     </div>
     <label>min</label>
     <div class="btn-group"
@@ -108,25 +133,55 @@
       <button class="form-control dropdownToggle"
               dropdownToggle
               type="button">
-        {{getPeriodReadableActive(singleAerobicActivity.gymTraining.period)}} <i class="fa fa-caret-down" aria-hidden="true"></i>
+        {{getPeriodReadableActive(singleActivity.gymTraining.period)}} <i class="fa fa-caret-down" aria-hidden="true"></i>
       </button>
-      <div *dropdownMenu class="dropdown-menu" role="menu">
+      <div *dropdownMenu class="dropdown-menu"
+           role="menu">
         <div class="list-group">
           <a *ngFor="let type of periodTypesStringArray"
-             (click)="addPeriod('gymTraining',type)"
+             (click)="addPeriod(type, 'gymTraining')"
              class="list-group-item list-group-item-action">
             {{getPeriodReadable(type)}}
           </a>
         </div>
       </div>
     </div>
+    <div class="btn-group"
+         dropdown>
+      <button class="form-control dropdownToggle"
+              dropdownToggle
+              type="button">
+        {{getIntensityReadableActive(singleActivity.aerobicTraining.intensity)}}
+        <i class="fa fa-caret-down"
+           aria-hidden="true">
+        </i>
+      </button>
+      <div *dropdownMenu class="dropdown-menu"
+           role="menu">
+        <div class="list-group">
+          <a *ngFor="let type of intensityTypesStringArray"
+             (click)="addIntensity(type, 'gymTraining')"
+             class="list-group-item list-group-item-action">
+            {{getIntensityReadable(type)}}
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
   <button type="button"
-          (click)="addAnotherGym()"
+          (click)="addAnotherActivity('gymTraining')"
           class="btn btn-primary calculator-item">
-    Add another gym activity
+    Dodaj aktywność
   </button>
+  <ng-container *ngIf="userInformation.gymTraining.length">
+    <ul>
+      <li *ngFor="let activity of userInformation.gymTraining">
+        {{readActivity(activity)}}
+      </li>
+    </ul>
+  </ng-container>
   <button type="submit"
+          (click)="setCalories()"
           class="btn btn-success">
     Pokaz kcal!
   </button>

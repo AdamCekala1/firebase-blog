@@ -12,7 +12,8 @@ export class HeaderComponent {
   routerLinks: {link: string, linkReadable: string, icon: string}[] = [
     {link: '', linkReadable: 'Start', icon: 'fa-home'},
     {link: CONSTANTS.ROUTING_URL.CALCULATOR, linkReadable: 'Kalkulator', icon: 'fa-calculator'},
-    {link: CONSTANTS.ROUTING_URL.DIET, linkReadable: 'Przepisy', icon: 'fa-book'}
+    {link: CONSTANTS.ROUTING_URL.DIET, linkReadable: 'Przepisy', icon: 'fa-book'},
+    {link: CONSTANTS.ROUTING_URL.IGREDIENTS, linkReadable: 'Składniki', icon: 'fa-apple'}
   ];
 
 }

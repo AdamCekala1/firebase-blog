@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import { cloneDeep } from 'lodash';
+import {AlertService} from 'ngx-alerts';
+import {isNumber, cloneDeep, isUndefined, toNumber} from 'lodash';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, ValidatorFn} from '@angular/forms';
 
 import {CONSTANTS} from '../../../shared/CONSTANTS';
 import {bodyType, intensityType, periodType} from './calculator-form.enums';
 import {UtilsService} from '../../../core/utils/utils.service';
+import {CalculatorInformation, Calories, IntensityDetails} from '../calculator.interface';
+import {CalculatorService} from '../calculator.service';
 
 @Component({
   selector: 'c-form',
@@ -16,14 +19,7 @@ export class CalculatorFormComponent implements OnInit {
   periodTypesStringArray: string[] = [];
   bodyTypesStringArray: string[] = [];
   intensityTypesStringArray: string[] = [];
-  singleAerobicActivity: {
-    aerobicTraining: {
-      time: number, period: periodType, intensity: intensityType
-    },
-    gymTraining: {
-      time: number, period: periodType
-    }
-  } = {
+  singleActivity: {aerobicTraining: IntensityDetails, gymTraining: IntensityDetails} = {
     aerobicTraining: {
       time: 0, period: periodType.DAY, intensity: intensityType.LIGHT
     },
@@ -31,38 +27,59 @@ export class CalculatorFormComponent implements OnInit {
       time: 0, period: periodType.DAY
     }
   };
-  userInformation: {
-    isMen: boolean,
-    weight: number,
-    heigth: number,
-    builType: bodyType,
-    aerobicTraining: {time: number, period: periodType, intensity: intensityType}[],
-    gymTraining: {time: number, period: periodType}[],
-  } = {
-    isMen: true,
-    weight: 0,
-    heigth: 0,
-    builType: bodyType.ENDO,
+  userInformation: CalculatorInformation = {
     aerobicTraining: [],
+    age: 0,
+    builType: bodyType.ENDO,
     gymTraining: [],
+    height: 0,
+    isMen: true,
+    weigth: 0,
   };
+  @Output() onCalculate: EventEmitter<Calories> = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder, private utilsService: UtilsService) { }
+  constructor(private alertService: AlertService,
+              private formBuilder: FormBuilder,
+              private calculatorService: CalculatorService,
+              private utilsService: UtilsService) { }
+
+  setCalories() {
+    const {age, weigth, height, isMen} = this.calculatorForm.value;
+
+    this.userInformation = {
+      ...this.userInformation,
+      ...{age, weigth, height, isMen}
+    };
+
+    if(weigth > 1 && height > 1 && age > 1) {
+      this.onCalculate.emit(this.calculatorService.calculateKcal(this.userInformation));
+    } else {
+      this.alertService.danger('Uzupełnij dane by wykonać obliczenia !');
+    }
+  }
+
+  readActivity(activity: IntensityDetails): string {
+    return `${CONSTANTS.intensitTypeReadable[activity.intensity]} Czas: ${activity.time} ${CONSTANTS.periodsReadable.readableString[activity.period]}`;
+  }
+
+  checkIsValid(name: string): boolean {
+    return this.calculatorForm.get(name).valid;
+  }
 
   userBuildTypeClass(type: string): string {
     return this.userInformation.builType === bodyType[type] ? 'active' : '';
   }
 
   getBodyTypeReadable(type: string): string {
-    return CONSTANTS.bodyTypeReadable[bodyType[type]];
+    return CONSTANTS.bodyType.readableString[bodyType[type]];
   }
 
   getPeriodReadable(type: string): string {
-    return CONSTANTS.periodsReadable[periodType[type]];
+    return CONSTANTS.periodsReadable.readableString[periodType[type]];
   }
 
   getPeriodReadableActive(type: periodType): string {
-    return CONSTANTS.periodsReadable[type];
+    return CONSTANTS.periodsReadable.readableString[type];
   }
 
   getIntensityReadable(type: string): string {
@@ -77,21 +94,23 @@ export class CalculatorFormComponent implements OnInit {
     this.userInformation.builType = bodyType[value];
   }
 
-  addPeriod(name: string, type: string) {
-    this.singleAerobicActivity[name].period = periodType[type];
+  addPeriod(type: string, activityName: string) {
+    this.singleActivity[activityName].period = periodType[type];
   }
 
-  addAeorbicIntensity(type: string) {
-    this.singleAerobicActivity.aerobicTraining.intensity = intensityType[type];
+  addIntensity(type: string, activityName: string) {
+    this.singleActivity[activityName].intensity = intensityType[type];
   }
 
-  addAnotherAero() {
-    this.userInformation.aerobicTraining.push(cloneDeep(this.singleAerobicActivity.aerobicTraining));
-    console.log(this.userInformation.aerobicTraining)
-  }
+  addAnotherActivity(name: string) {
+    const readTime: number = toNumber(this.calculatorForm.get(name).value);
 
-  addAnotherGym() {
-    this.userInformation.gymTraining.push(cloneDeep(this.singleAerobicActivity.gymTraining));
+    if(readTime > 0) {
+      this.singleActivity[name].time = readTime;
+      this.userInformation[name].push(cloneDeep(this.singleActivity[name]));
+    } else {
+      this.alertService.danger('Nie możesz dodać aktywności z 0 czasem');
+    }
   }
 
   ngOnInit() {
@@ -101,10 +120,35 @@ export class CalculatorFormComponent implements OnInit {
 
     this.calculatorForm = this.formBuilder.group({
       isMen: true,
-      weigth: 0,
-      heigth: 0,
-      aeroTime: 0,
-      gymTime: 0
+      weigth: [1, [this.minValue(1), this.isNumberValidator()]],
+      age: [1, [this.minValue(1), this.isNumberValidator()]],
+      height: [1, [this.minValue(1), this.isNumberValidator()]],
+      aerobicTraining: [0, [this.minValue(0), this.isNumberValidator()]],
+      gymTraining: [0, [this.minValue(0), this.isNumberValidator()]]
     });
+  }
+
+  private minValue(min: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      const isValid: boolean = control.value >= min;
+
+      if (!isValid) {
+        return {'isValid': false};
+      } else {
+        return null;
+      }
+    };
+  }
+
+  private isNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      const isValid: boolean  = isNumber(control.value);
+
+      if(!isValid) {
+        return {'isValid': false};
+      } else {
+        return null;
+      }
+    };
   }
 }

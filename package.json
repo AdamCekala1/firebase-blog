@@ -30,7 +30,9 @@
     "ionicons-npm": "^2.0.1",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
+    "ngx-alerts": "^1.0.15",
     "ngx-bootstrap": "^1.9.1",
+    "roboto-fontface": "^0.8.0",
     "rxjs": "^5.4.1",
     "tether": "^1.4.0",
     "zone.js": "^0.8.14"

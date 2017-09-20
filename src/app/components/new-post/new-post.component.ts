@@ -1,14 +1,7 @@
+import * as moment from 'moment';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AngularFireDatabase} from 'angularfire2/database';
-import * as moment from 'moment';
-
-interface Image {
-  path: string;
-  filename: string;
-  downloadURL?: string;
-  $key?: string;
-}
 
 @Component({
   selector: 'app-new-post',

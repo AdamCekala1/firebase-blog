@@ -35,6 +35,8 @@ label{
 }
 
 .custom-placeholder{
+  order: 1;
+  pointer-events: none;
   padding: 0;
   margin: 0;
   position: absolute;
@@ -60,5 +62,9 @@ input:focus+.custom-placeholder{
 }
 
 .active{
-  background: red;
+  background: rgba($color-motive, 0.8);
+}
+
+.invalid{
+  border: 2px solid red;
 }
