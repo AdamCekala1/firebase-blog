@@ -1,11 +1,12 @@
 <button class="custom-btn-circle custom-btn-fixed-add btn btn-success"
-        (click)="lgModal.show()">
+        (click)="createNewPostModal.show()">
   <h6 class="custom-btn-center">+</h6>
 </button>
 <div bsModal
-     #lgModal="bs-modal"
+     #createNewPostModal="bs-modal"
      class="modal fade" tabindex="-1"
      role="dialog"
+     (onHide)="clearInputs()"
      aria-labelledby="myLargeModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -16,7 +17,7 @@
         </h4>
         <button type="button"
                 class="close pull-right"
-                (click)="lgModal.hide()"
+                (click)="createNewPostModal.hide()"
                 aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -38,12 +39,14 @@
           </div>
           <input type="file"
                  alt=""
+                 formControlName="file"
                  (change)="readInputFile($event)"/>
           <button class="btn btn-primary"
                   [disabled]="!quickCreatePost.valid"
                   (click)="createNewPost()">
             Add new post!
           </button>
+          <p *ngIf="uploadImage.error">{{uploadImage.error}}</p>
         </form>
       </div>
     </div>

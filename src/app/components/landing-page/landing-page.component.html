@@ -1,6 +1,6 @@
 <div class="cards container">
   <div class="card" *ngFor="let post of lastPosts">
-    <img *ngIf="post.thumbnail.length>3"
+    <img *ngIf="post.thumbnail"
          class="card-img-top"
          src="{{post.thumbnail}}"
          alt="{{post.title}}">
