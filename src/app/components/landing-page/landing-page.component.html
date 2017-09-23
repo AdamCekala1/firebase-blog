@@ -2,7 +2,7 @@
   <div class="card" *ngFor="let post of lastPosts">
     <img *ngIf="post.thumbnail.length>3"
          class="card-img-top"
-         src="../../../assets/{{post.thumbnail}}"
+         src="{{post.thumbnail}}"
          alt="{{post.title}}">
     <div class="card-body">
       <h4 class="card-title">

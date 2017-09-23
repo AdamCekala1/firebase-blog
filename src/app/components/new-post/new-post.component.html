@@ -36,11 +36,9 @@
                       placeholder="Post text...">
             </textarea>
           </div>
-          <div class="form-group">
-            <input formControlName="thumbnail"
-                   class="form-control"
-                   placeholder="Thumbnail name here .jpg">
-          </div>
+          <input type="file"
+                 alt=""
+                 (change)="readInputFile($event)"/>
           <button class="btn btn-primary"
                   [disabled]="!quickCreatePost.valid"
                   (click)="createNewPost()">

@@ -7,6 +7,8 @@ export class CONSTANTS {
     IGREDIENTS: 'ingredients'
   };
 
+  public static MAX_IMAGES_SIZE = 500000;
+
   public static KCAL = {
     PER_MINUTE: {
       AERO: {
