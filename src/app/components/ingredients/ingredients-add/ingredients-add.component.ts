@@ -3,8 +3,11 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ModalDirective} from 'ngx-bootstrap';
 
+import {CONSTANTS} from '../../../shared/CONSTANTS';
 import {HttpService} from '../../../core/http/http.service';
 import {InputFile} from '../../../core/http/http.interface';
+import {typesOfProducts} from './types-of-products.enum';
+import {UtilsService} from '../../../core/utils/utils.service';
 
 @Component({
   selector: 'i-add',
@@ -13,11 +16,13 @@ import {InputFile} from '../../../core/http/http.interface';
 })
 export class IngredientsAddComponent implements OnInit {
   addIngredientsForm: FormGroup;
+  ingredientTypes: string[] = [];
   private uploadImage: {file?: InputFile, url?: string, error?: string} = {};
   @ViewChild('ingredientsModal') ingredientsModal: ModalDirective;
 
   constructor(private httpService: HttpService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private utilsService: UtilsService) { }
 
   addNewIngredient() {
     const {carbs, fat, proteins} = this.addIngredientsForm.value;
@@ -45,7 +50,20 @@ export class IngredientsAddComponent implements OnInit {
     }
   }
 
+  typeReadable(type: string): string {
+    return CONSTANTS.PRODUCTS_TYPE[typesOfProducts[type]];
+  }
+
+  setTypeOfProducts(type: string) {
+    this.addIngredientsForm.get('genre').setValue(type);
+  }
+
+  checkIsSelected(type: string): boolean {
+    return type === this.addIngredientsForm.get('genre').value;
+  }
+
   ngOnInit() {
+    this.ingredientTypes = this.utilsService.enumToKeysArray(typesOfProducts);
     this.addIngredientsForm = this.formBuilder.group({
       approxWeigth: 0,
       carbs: [0, Validators.required],

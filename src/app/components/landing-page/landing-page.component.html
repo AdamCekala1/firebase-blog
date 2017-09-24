@@ -1,4 +1,4 @@
-<div class="cards container">
+<div class="cards cards-grids container">
   <div class="card card-no-padding"
        *ngFor="let post of lastPosts">
     <img *ngIf="post.thumbnail"
@@ -6,7 +6,7 @@
          src="{{post.thumbnail}}"
          alt="{{post.title}}">
     <div class="card-body">
-      <h4 class="card-title">
+      <h4 class="">
         {{post.title}}
       </h4>
       <p class="card-text">

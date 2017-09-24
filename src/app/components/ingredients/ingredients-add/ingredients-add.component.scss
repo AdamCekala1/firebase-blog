@@ -1,0 +1,28 @@
+@import '../../../config';
+
+.input-short{
+  width: 60px;
+}
+
+.input-flex{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  justify-content: space-between;
+}
+
+.chooseType{
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: inset 0px -2px 0px 0px $color-motive;
+  }
+
+  &-active{
+    font-weight: 600;
+    color: $color-motive;
+  }
+}
+

@@ -1,4 +1,5 @@
 import {bodyType, intensityType, periodType} from '../components/calculator/calculator-form/calculator-form.enums';
+import {typesOfProducts} from '../components/ingredients/ingredients-add/types-of-products.enum';
 
 export class CONSTANTS {
   public static ROUTING_URL = {
@@ -8,6 +9,20 @@ export class CONSTANTS {
   };
 
   public static MAX_IMAGES_SIZE = 500000;
+
+  public static PRODUCTS_TYPE = {
+    [typesOfProducts.DRINIKS]: 'napoje i słodycze',
+    [typesOfProducts.FASTFOOD]: 'fast food',
+    [typesOfProducts.FATS]: 'tłuszcze',
+    [typesOfProducts.FUNCIONAL]: 'odżywki',
+    [typesOfProducts.GRAINS]: 'produkty zbożowe',
+    [typesOfProducts.MEALS]: 'dania gotowe',
+    [typesOfProducts.MEAT]: 'mięso i ryby',
+    [typesOfProducts.NUTS]: 'orzechy i nasiona',
+    [typesOfProducts.OTHERS]: 'inny',
+    [typesOfProducts.PROTEINS]: 'nabiał i jaja',
+    [typesOfProducts.VEGETABLES]: 'warzywa i owoce'
+  };
 
   public static KCAL = {
     PER_MINUTE: {
