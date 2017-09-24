@@ -7,14 +7,14 @@
       <c-form (onCalculate)="setCalories($event)"></c-form>
     </div>
     <div class="card-body col-xs-12 col-md-6">
-      Wyliczone wartości na dzień aktywności:
+      <h5>Wyliczone wartości na dzień aktywności:</h5>
       <ng-container *ngIf="allCalories">
-        bmr: {{allCalories.bmr}} kcal <br />
-        z wysiłku aerobowego: {{allCalories.teaAero}} kcal <br />
-        z wysiłku siłowego: {{allCalories.teaGym}} kcal <br />
-        neat: {{allCalories.neat}} kcal <br />
-        tef:  {{allCalories.tef}} kcal <br />
-        === {{allCalories.all}} kcal <br />
+        <div class="card"> bmr: {{allCalories.bmr}} kcal </div>
+        <div class="card">z wysiłku aerobowego: {{allCalories.teaAero}} kcal </div>
+        <div class="card">z wysiłku siłowego: {{allCalories.teaGym}} kcal  </div>
+        <div class="card">neat: {{allCalories.neat}} kcal  </div>
+        <div class="card">tef:  {{allCalories.tef}} kcal </div>
+        <div class="card">SUMA: {{allCalories.all}} kcal <br /></div>
       </ng-container>
     </div>
   </div>

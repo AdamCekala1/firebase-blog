@@ -1,3 +1,5 @@
+@import '../config';
+
 .cards{
   position: relative;
   display: flex;
@@ -5,10 +7,37 @@
 }
 
 .card{
+  overflow: auto;
+  padding: 20px;
+  background: #fff;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  border-radius: 2px;
   margin: 0;
-  box-shadow: rgba(0,0,0,0.117647) 0 1px 6px, rgba(0,0,0,0.117647) 0 1px 4px;
+  max-width: 1900px;
+
+  &-content{
+    display:inline-block;
+    max-height: 60px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+  }
 
   img{
     max-height: 350px;
+  }
+
+  &-no-padding{
+    padding: 0;
+  }
+
+  &-margin-bottom{
+    margin-bottom: 100px;
+  }
+
+  @media (min-width: $col-md){
+    margin-bottom: 0;
   }
 }

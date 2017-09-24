@@ -1,4 +1,8 @@
 <div class="card" *ngFor="let ingredient of lastIngredients">
+  <img *ngIf="ingredient.thumbnail"
+       class="card-img-top"
+       src="{{ingredient.thumbnail}}"
+       alt="{{ingredient.name}}">
   <p>name: {{ingredient.name}}</p>
   <p>kcal: {{ingredient.kcal}}</p>
   <p>bialko: {{ingredient.proteins}}</p>

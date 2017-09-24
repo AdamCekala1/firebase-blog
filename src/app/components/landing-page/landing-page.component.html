@@ -1,5 +1,6 @@
 <div class="cards container">
-  <div class="card" *ngFor="let post of lastPosts">
+  <div class="card card-no-padding"
+       *ngFor="let post of lastPosts">
     <img *ngIf="post.thumbnail"
          class="card-img-top"
          src="{{post.thumbnail}}"
@@ -10,12 +11,12 @@
       </h4>
       <p class="card-text">
         <small class="text-muted">
-          Date: {{post.date}}
+          Date: {{post.createDate}}
         </small>
       </p>
-      <p class="card-text">
+      <div class="card-content">
         {{post.content}}
-      </p>
+      </div>
       <p class="card-text">
         <small class="text-muted">
           Author: {{post.authorId===1 ? 'Adam' : 'Other'}}

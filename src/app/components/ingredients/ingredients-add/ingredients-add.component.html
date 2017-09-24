@@ -67,8 +67,12 @@
                    class="form-control"
                    placeholder="approxWeigth">
           </div>
+          <input type="file"
+                 alt=""
+                 formControlName="file"
+                 (change)="readInputFile($event)"/>
           <button class="btn btn-primary"
-                  (click)="addNewIngredient();ingredientsModal.hide()"
+                  (click)="addNewIngredient()"
                   [disabled]="!addIngredientsForm.valid">
             Add ingredient!
           </button>

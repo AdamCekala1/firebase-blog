@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {cloneDeep, remove, toNumber} from 'lodash';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AngularFireDatabase} from 'angularfire2/database';
-import {toNumber} from 'lodash';
+import {ModalDirective} from 'ngx-bootstrap';
+
+import {HttpService} from '../../../core/http/http.service';
+import {InputFile} from '../../../core/http/http.interface';
 
 @Component({
   selector: 'i-add',
@@ -10,22 +13,36 @@ import {toNumber} from 'lodash';
 })
 export class IngredientsAddComponent implements OnInit {
   addIngredientsForm: FormGroup;
+  private uploadImage: {file?: InputFile, url?: string, error?: string} = {};
+  @ViewChild('ingredientsModal') ingredientsModal: ModalDirective;
 
-  constructor(private angularFireDatabase: AngularFireDatabase,
+  constructor(private httpService: HttpService,
               private formBuilder: FormBuilder) { }
 
   addNewIngredient() {
     const {carbs, fat, proteins} = this.addIngredientsForm.value;
     const kcal: number = toNumber(carbs) * 4 + toNumber(proteins) * 4 + toNumber(fat) * 9;
+    const inputsValues = cloneDeep(this.addIngredientsForm.value);
 
-    this.angularFireDatabase.list('ingredients').push({
-      ...this.addIngredientsForm.value,
-      kcal
-    });
+    delete inputsValues.file;
+
+    this.httpService.postData( 'ingredients', {...inputsValues, kcal}, this.uploadImage.file)
+      .then(() => this.ingredientsModal.hide());
   }
 
   resetForm() {
+    this.uploadImage = {};
     this.addIngredientsForm.reset();
+  }
+
+  readInputFile(event) {
+    const data: {file?: InputFile} = this.httpService.readInputFile(event);
+
+    if(data.file) {
+      this.uploadImage.file = data.file;
+    } else {
+      this.addIngredientsForm.get('file').reset();
+    }
   }
 
   ngOnInit() {
@@ -35,7 +52,8 @@ export class IngredientsAddComponent implements OnInit {
       fat: [0, Validators.required],
       genre: ['', Validators.required],
       name: ['', Validators.required],
-      proteins: [0, Validators.required]
+      proteins: [0, Validators.required],
+      file: ''
     });
   }
 }

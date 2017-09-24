@@ -6,4 +6,5 @@ export interface Ingredient {
   kcal: number;
   name: string;
   proteins: number;
+  thumbnail?: string;
 }
