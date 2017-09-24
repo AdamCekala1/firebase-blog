@@ -1,9 +1,5 @@
 @import './config';
 
-.row{
-  background: $color-bg;
-}
-
 .container{
   padding: 50px 0;
   min-height: 100vh;
@@ -11,4 +7,13 @@
 
 .remove-padding{
   padding: 0;
+}
+
+.app-z-index{
+  position: relative;
+  z-index: 1;
+}
+
+.app-background{
+  background: linear-gradient(90deg, $color-bg 75%, rgba($color-bg, .7) 25%);
 }

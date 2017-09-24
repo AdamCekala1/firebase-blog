@@ -1,27 +1,30 @@
-<div class="cards cards-grids container">
-  <div class="card card-no-padding"
-       *ngFor="let post of lastPosts">
-    <img *ngIf="post.thumbnail"
-         class="card-img-top"
-         src="{{post.thumbnail}}"
-         alt="{{post.title}}">
-    <div class="card-body">
-      <h4 class="">
-        {{post.title}}
-      </h4>
-      <p class="card-text">
-        <small class="text-muted">
-          Date: {{post.createDate}}
-        </small>
-      </p>
-      <div class="card-content">
-        {{post.content}}
+<lp-banner></lp-banner>
+<div class="container content-position">
+  <div class="cards cards-grids">
+    <div class="card card-no-padding"
+         *ngFor="let post of lastPosts">
+      <img *ngIf="post.thumbnail"
+           class="card-img-top"
+           src="{{post.thumbnail}}"
+           alt="{{post.title}}">
+      <div class="card-body">
+        <h4 class="">
+          {{post.title}}
+        </h4>
+        <p class="card-text">
+          <small class="text-muted">
+            Date: {{post.createDate}}
+          </small>
+        </p>
+        <div class="card-content">
+          {{post.content}}
+        </div>
+        <p class="card-text">
+          <small class="text-muted">
+            Author: {{post.authorId===1 ? 'Adam' : 'Other'}}
+          </small>
+        </p>
       </div>
-      <p class="card-text">
-        <small class="text-muted">
-          Author: {{post.authorId===1 ? 'Adam' : 'Other'}}
-        </small>
-      </p>
     </div>
   </div>
 </div>

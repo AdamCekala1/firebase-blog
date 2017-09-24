@@ -3,6 +3,7 @@ $color-navbar-text: #fff;
 
 .footer{
   position: fixed;
+  z-index: 2;
   bottom: 0;
   width: 100%;
   display:flex;

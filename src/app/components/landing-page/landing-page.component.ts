@@ -4,7 +4,7 @@ import {Post} from '../../shared/posts.interface';
 import {HttpService} from '../../core/http/http.service';
 
 @Component({
-  selector: 'app-landing-page',
+  selector: 'lp-root',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
