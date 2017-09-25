@@ -1,21 +1,24 @@
-<div class="card">
-  <div class="row">
-    <div class="card-body col-xs-12 col-md-12">
-      Wskaźnik podstawowej przemiany materii - BMR
-    </div>
-    <div class="card-body col-xs-12 col-md-6">
-      <c-form (onCalculate)="setCalories($event)"></c-form>
-    </div>
-    <div class="card-body col-xs-12 col-md-6">
-      <h5>Wyliczone wartości na dzień aktywności:</h5>
-      <ng-container *ngIf="allCalories">
-        <div class="card"> bmr: {{allCalories.bmr}} kcal </div>
-        <div class="card">z wysiłku aerobowego: {{allCalories.teaAero}} kcal </div>
-        <div class="card">z wysiłku siłowego: {{allCalories.teaGym}} kcal  </div>
-        <div class="card">neat: {{allCalories.neat}} kcal  </div>
-        <div class="card">tef:  {{allCalories.tef}} kcal </div>
-        <div class="card">SUMA: {{allCalories.all}} kcal <br /></div>
-      </ng-container>
+<app-banner [backgroundImage]="'numbers.jpg'"></app-banner>
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="card-body col-xs-12 col-md-12">
+        Wskaźnik podstawowej przemiany materii - BMR
+      </div>
+      <div class="card-body col-xs-12 col-md-6">
+        <c-form (onCalculate)="setCalories($event)"></c-form>
+      </div>
+      <div class="card-body col-xs-12 col-md-6">
+        <h5>Wyliczone wartości na dzień aktywności:</h5>
+        <ng-container *ngIf="allCalories">
+          <div class="card"> bmr: {{allCalories.bmr}} kcal </div>
+          <div class="card">z wysiłku aerobowego: {{allCalories.teaAero}} kcal </div>
+          <div class="card">z wysiłku siłowego: {{allCalories.teaGym}} kcal  </div>
+          <div class="card">neat: {{allCalories.neat}} kcal  </div>
+          <div class="card">tef:  {{allCalories.tef}} kcal </div>
+          <div class="card">SUMA: {{allCalories.all}} kcal <br /></div>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>

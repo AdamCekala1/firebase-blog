@@ -3,6 +3,7 @@
 $color-box-shadow: #DFDFDF;
 
 .card{
+  transform: translateY(-100px);
   &-body{
     padding: 20px;
     margin: 0;

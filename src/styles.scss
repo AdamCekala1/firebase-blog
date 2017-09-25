@@ -1,8 +1,9 @@
 @import 'app/styles/cards';
 
 body{
-  min-width: 400px;
+  min-width: 360px;
   min-height: 600px;
+  margin: 0;
 }
 
 /* for working modal (ngx-bootstrap) with bootstrap v4 */
@@ -38,3 +39,22 @@ body{
 //    max-width: 1600px;
 //  }
 //}
+
+//.modal-backdrop {
+//  z-index: -1;
+//}
+
+//.modal-backdrop.fade.in {
+//  z-index: -1;
+//}
+//.animated {
+//  -webkit-animation-duration: 1s;
+//  animation-duration: 1s;
+//  -webkit-animation-fill-mode: both;
+//  animation-fill-mode: both;
+//  z-index: 100;
+//}
+
+.row{
+  margin: 0;
+}

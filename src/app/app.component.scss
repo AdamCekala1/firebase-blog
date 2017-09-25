@@ -9,11 +9,7 @@
   padding: 0;
 }
 
-.app-z-index{
-  position: relative;
-  z-index: 1;
-}
-
 .app-background{
+  margin-top: $height-navbar;
   background: linear-gradient(90deg, $color-bg 75%, rgba($color-bg, .7) 25%);
 }

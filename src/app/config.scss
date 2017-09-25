@@ -1,3 +1,5 @@
+@import './mixins';
+
 $color-motive: purple;
 $color-hover: #dddddd;
 $color-text: rgba(0,0,0,0.87);
@@ -6,3 +8,4 @@ $col-sm: 576px;
 $col-md: 768px;
 $col-lg: 992px;
 $col-xl: 1200px;
+$height-navbar: 60px;

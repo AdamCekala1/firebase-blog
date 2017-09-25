@@ -10,6 +10,7 @@
       flex: 1;
       min-width:47.5%;
       margin:1%;
+      border: none;
 
       &:first-child{
         min-width:100%;
@@ -51,8 +52,6 @@
 }
 
 .card{
-  overflow: auto;
-  background: #fff;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
   border-radius: 2px;
@@ -70,6 +69,7 @@
 
   img{
     max-height: 350px;
+    border-radius: 0;
   }
 
   &-no-padding{

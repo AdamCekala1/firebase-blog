@@ -1,26 +1,25 @@
-<div class="vertical-nav">
-  <button class="btn btn-primary hidden-md-up"
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">HOME</a>
+  <button class="navbar-toggler"
           type="button"
           data-toggle="collapse"
-          data-target="#collapseExample"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-controls="collapseExample">
-    <span class="">Menu</span>
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse"
-       id="collapseExample">
-    <ul class="nav flex-column"
-        id="exCollapsingNavbar3">
-      <li class="vertical-nav-item nav-item"
-          *ngFor="let link of routerLinks">
-        <a class="vertical-nav-link nav-link"
-           routerLinkActive="active"
-           [routerLinkActiveOptions]="{ exact: true }"
-           routerLink="{{link.link}}">
-          <i class="fa vertical-nav-icon" [ngClass]="link.icon" aria-hidden="true"></i>
-          <h6>{{link.linkReadable}}</h6>
-        </a>
-      </li>
+  <div class="collapse navbar-collapse"
+       id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <a class="nav-item navbar-link"
+         *ngFor="let link of routerLinks"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         routerLink="{{link.link}}">
+        <i class="fa nav-icon" [ngClass]="link.icon" aria-hidden="true"></i>
+        {{link.linkReadable}}
+      </a>
     </ul>
   </div>
-</div>
+</nav>

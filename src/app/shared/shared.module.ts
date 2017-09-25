@@ -15,6 +15,7 @@ import {HeaderComponent} from '../components/header/header.component';
 import {LoaderComponent} from '../components/loader/loader.component';
 import {NewPostComponent} from '../components/new-post/new-post.component';
 import {PageNotFoundComponent} from '../components/page-not-found/page-not-found.component';
+import {BannerComponent} from '../components/banner/banner.component';
 
 @NgModule({
   imports: [
@@ -39,10 +40,12 @@ import {PageNotFoundComponent} from '../components/page-not-found/page-not-found
     HeaderComponent,
     ModalModule,
     NewPostComponent,
+    BannerComponent,
     ReactiveFormsModule,
     RouterModule
   ],
   declarations: [
+    BannerComponent,
     FooterComponent,
     HeaderComponent,
     LoaderComponent,
