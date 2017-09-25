@@ -1,71 +1,5 @@
 @import '../../config';
 
-//.nav{
-//  min-height: 50px;
-//  position: relative;
-//  width: 100vw;
-//  background: $color-motive;
-//  font-family: Roboto, "Helvetica Neue", sans-serif;
-//
-//  @media (min-width: 768px) {
-//    .collapse {
-//      //width: 100%;
-//      display: block;
-//      //display: inline-block;
-//    }
-//  }
-//
-//  @media (min-width: 768px) {
-//    //padding-top: 50px;
-//    left: 0;
-//    right: 0;
-//    top: 0;
-//    height: 80px;
-//    width: 100vw;
-//    position: fixed;
-//    z-index: 100000;
-//  }
-//
-//  &-item{
-//    text-align: center;
-//    //width: 100%;
-//  }
-//
-//  &-link{
-//    padding: 20px;
-//    display: flex;
-//    align-items: center;
-//    color: $color-text;
-//
-//    h6{
-//      margin: 0;
-//    }
-//
-//    &:hover{
-//      background: $color-hover;
-//    }
-//  }
-//
-//  &-icon{
-//    font-size: 16px;
-//    padding-right: 15px;
-//  }
-//}
-//
-//.hidden-md-up{
-//  @media (min-width: 768px){
-//    display: none;
-//  }
-//}
-//
-//.active{
-//  color: $color-motive;
-//
-//  &:hover{
-//    background: none;
-//  }
-//}
-
 .navbar{
   z-index: 999;
   top: 0;
@@ -88,8 +22,12 @@
     }
 
     &:hover{
-      //background: $color-hover;
-      box-shadow: inset 0px -3px 0px 0px $color-motive;
+      box-shadow: inset 0px -3px 0px 0px lighten($color-motive, 10%);
     }
   }
+}
+
+.navbar .navbar-link.active{
+  color: $color-motive;
+  box-shadow: inset 0px -3px 0px 0px $color-motive;
 }
