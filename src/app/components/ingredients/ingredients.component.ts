@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {CONSTANTS} from '../../shared/CONSTANTS';
-import {HttpService} from '../../core/http/http.service';
-import {Ingredient} from './ingredients.interface';
-import {typesOfProducts} from './ingredients-add/types-of-products.enum';
+import { CONSTANTS } from '../../shared/CONSTANTS';
+import { HttpService } from '../../core/http/http.service';
+import { Ingredient } from './ingredients.interface';
+import { typesOfProducts } from './ingredients-add/types-of-products.enum';
 
 @Component({
   selector: 'i-root',
@@ -13,7 +13,7 @@ import {typesOfProducts} from './ingredients-add/types-of-products.enum';
 export class IngredientsComponent implements OnInit {
   lastIngredients: Ingredient[] = [];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {  }
 
   typeReadable(type: string): string {
     return CONSTANTS.PRODUCTS_TYPE[typesOfProducts[type]];

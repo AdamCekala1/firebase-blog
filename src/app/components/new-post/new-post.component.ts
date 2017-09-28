@@ -1,11 +1,11 @@
-import {AlertService} from 'ngx-alerts';
-import {cloneDeep} from 'lodash';
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ModalDirective} from 'ngx-bootstrap';
+import { AlertService } from 'ngx-alerts';
+import { cloneDeep } from 'lodash';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalDirective } from 'ngx-bootstrap';
 
-import {HttpService} from '../../core/http/http.service';
-import {InputFile} from '../../core/http/http.interface';
+import { HttpService } from '../../core/http/http.service';
+import { InputFile } from '../../core/http/http.interface';
 
 @Component({
   selector: 'app-new-post',

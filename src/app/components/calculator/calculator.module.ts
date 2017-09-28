@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
-import {CalculatorFormComponent} from './calculator-form/calculator-form.component';
-import {CalculatorComponent} from './calculator.component';
-import {SharedModule} from '../../shared/shared.module';
-import {CalculatorService} from "./calculator.service";
+import { CalculatorComponent } from './calculator.component';
+import { CalculatorFormComponent } from './calculator-form/calculator-form.component';
+import { CalculatorService } from './calculator.service';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
     SharedModule
   ],
   declarations: [

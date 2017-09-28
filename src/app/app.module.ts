@@ -10,8 +10,6 @@ import {DietModule} from './components/diet/diet.module';
 import {IngredientsModule} from './components/ingredients/ingredients.module';
 import {LandingPageModule} from './components/landing-page/landing-page.module';
 import {SharedModule} from './shared/shared.module';
-import { ScrollUpComponent } from './components/scroll-up/scroll-up.component';
-import { BannerParallaxComponent } from './components/banner-parallax/banner-parallax.component';
 
 @NgModule({
   declarations: [

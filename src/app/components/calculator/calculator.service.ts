@@ -1,8 +1,8 @@
-import {forEach} from 'lodash';
-import {Injectable} from '@angular/core';
+import { forEach } from 'lodash';
+import { Injectable } from '@angular/core';
 
-import {CalculatorInformation, Calories, IntensityDetails} from './calculator.interface';
-import {CONSTANTS} from '../../shared/CONSTANTS';
+import { CalculatorInformation, Calories, IntensityDetails } from './calculator.interface';
+import { CONSTANTS } from '../../shared/CONSTANTS';
 
 @Injectable()
 export class CalculatorService {

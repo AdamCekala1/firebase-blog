@@ -1,6 +1,7 @@
 <app-banner [backgroundImage]="'../../../assets/food.jpg'"></app-banner>
 <div class="cards container cards-grids cards-grids-small">
-  <div class="card" *ngFor="let ingredient of lastIngredients">
+  <div class="card"
+       *ngFor="let ingredient of lastIngredients">
     <img *ngIf="ingredient.thumbnail"
          class="card-img-top"
          src="{{ingredient.thumbnail}}"
@@ -9,7 +10,9 @@
       <h4>name: {{ingredient.name}}</h4>
       <p class="text-muted">{{typeReadable(ingredient.genre)}}</p>
       <p>kcal: {{ingredient.kcal}}</p>
-      <p *ngIf="ingredient.approxWeigth">Średnia waga: {{ingredient.approxWeigth}}</p>
+      <p *ngIf="ingredient.approxWeigth">
+        Średnia waga: {{ingredient.approxWeigth}}
+      </p>
       <div class="">
         <p>bialko: {{ingredient.proteins}}</p>
         <p>tluszcz: {{ingredient.fat}}</p>

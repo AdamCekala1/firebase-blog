@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
 import * as smoothscroll from 'smoothscroll-polyfill';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-banner',

@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
 
-import {CONSTANTS} from '../../shared/CONSTANTS';
+import { CONSTANTS } from '../../shared/CONSTANTS';
 
 @Component({
   selector: 'app-header',

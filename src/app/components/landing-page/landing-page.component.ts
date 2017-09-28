@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {Post} from '../../shared/posts.interface';
-import {HttpService} from '../../core/http/http.service';
+import { Post } from '../../shared/posts.interface';
+import { HttpService } from '../../core/http/http.service';
 
 @Component({
   selector: 'lp-root',

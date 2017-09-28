@@ -1,13 +1,13 @@
-import {AlertService} from 'ngx-alerts';
-import {isNumber, cloneDeep, isUndefined, toNumber} from 'lodash';
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidatorFn} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
+import { AlertService } from 'ngx-alerts';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { isNumber, cloneDeep, isUndefined, toNumber } from 'lodash';
 
-import {CONSTANTS} from '../../../shared/CONSTANTS';
-import {bodyType, intensityType, periodType} from './calculator-form.enums';
-import {UtilsService} from '../../../core/utils/utils.service';
-import {CalculatorInformation, Calories, IntensityDetails} from '../calculator.interface';
-import {CalculatorService} from '../calculator.service';
+import { bodyType, intensityType, periodType } from './calculator-form.enums';
+import { CalculatorInformation, Calories, IntensityDetails } from '../calculator.interface';
+import { CalculatorService } from '../calculator.service';
+import { CONSTANTS } from '../../../shared/CONSTANTS';
+import { UtilsService } from '../../../core/utils/utils.service';
 
 @Component({
   selector: 'c-form',
@@ -39,8 +39,8 @@ export class CalculatorFormComponent implements OnInit {
   @Output() onCalculate: EventEmitter<Calories> = new EventEmitter();
 
   constructor(private alertService: AlertService,
-              private formBuilder: FormBuilder,
               private calculatorService: CalculatorService,
+              private formBuilder: FormBuilder,
               private utilsService: UtilsService) { }
 
   setCalories() {
@@ -59,7 +59,8 @@ export class CalculatorFormComponent implements OnInit {
   }
 
   readActivity(activity: IntensityDetails): string {
-    return `${CONSTANTS.intensitTypeReadable[activity.intensity]} Czas: ${activity.time} ${CONSTANTS.periodsReadable.readableString[activity.period]}`;
+    return `${CONSTANTS.intensitTypeReadable[activity.intensity]}
+    Czas: ${activity.time} ${CONSTANTS.periodsReadable.readableString[activity.period]}`;
   }
 
   checkIsValid(name: string): boolean {

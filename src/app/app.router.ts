@@ -1,11 +1,11 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 
-import {CalculatorComponent} from './components/calculator/calculator.component';
-import {CONSTANTS} from './shared/CONSTANTS';
-import {DietComponent} from './components/diet/diet.component';
-import {LandingPageComponent } from './components/landing-page/landing-page.component';
-import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {IngredientsComponent} from './components/ingredients/ingredients.component';
+import { CalculatorComponent } from './components/calculator/calculator.component';
+import { CONSTANTS } from './shared/CONSTANTS';
+import { DietComponent } from './components/diet/diet.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { IngredientsComponent } from './components/ingredients/ingredients.component';
 
 export const appRoutes: Routes = [
   {
