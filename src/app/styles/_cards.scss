@@ -57,6 +57,9 @@
   border-radius: 2px;
   margin: 0;
   max-width: 1900px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   &-content{
     display:inline-block;
@@ -65,6 +68,37 @@
     white-space: nowrap;
     overflow:hidden !important;
     text-overflow: ellipsis;
+  }
+
+  &-text-muted {
+    color: #7f8c8d;
+  }
+
+  &-img-background{
+    .card-body {
+      position: relative;
+      z-index: 10;
+    }
+
+    .card-title, .card-content {
+      color: #fff;
+    }
+
+    .card-text .card-text-muted {
+      color: #fff;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background-image: linear-gradient(to bottom, rgba(#000, .7), #000);
+      opacity: .5;
+    }
   }
 
   img{

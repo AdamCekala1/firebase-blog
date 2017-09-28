@@ -2,17 +2,15 @@
 <div class="container content-position">
   <div class="cards cards-grids">
     <div class="card card-no-padding"
+         [ngClass]="{'card-img-background': post.thumbnail}"
+         [ngStyle]="{'background-image': 'url('+ post.thumbnail +')'}"
          *ngFor="let post of lastPosts">
-      <img *ngIf="post.thumbnail"
-           class="card-img-top"
-           src="{{post.thumbnail}}"
-           alt="{{post.title}}">
       <div class="card-body">
-        <h4 class="">
+        <h4 class="card-title">
           {{post.title}}
         </h4>
         <p class="card-text">
-          <small class="text-muted">
+          <small class="card-text-muted">
             Date: {{post.createDate}}
           </small>
         </p>
@@ -20,7 +18,7 @@
           {{post.content}}
         </div>
         <p class="card-text">
-          <small class="text-muted">
+          <small class="card-text-muted">
             Author: {{post.authorId===1 ? 'Adam' : 'Other'}}
           </small>
         </p>
@@ -28,4 +26,5 @@
     </div>
   </div>
 </div>
+<app-banner-parallax [backgroundImage]="'../../../assets/food.jpg'"></app-banner-parallax>
 <app-new-post></app-new-post>

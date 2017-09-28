@@ -7,7 +7,7 @@ import * as smoothscroll from 'smoothscroll-polyfill';
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent implements OnInit {
-  @Input() backgroundImage: string = 'lp-bg.jpg';
+  @Input() backgroundImage: string = './../../../assets/lp-bg.jpg';
   @Input() title: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
   @Input() description: string = 'Aliquam porttitor, purus in venenatis pretium, libero tortor dictum felis, ut hendrerit neque diam a neque. Maecenas nec consectetur tellus, sed semper enim.';
 
