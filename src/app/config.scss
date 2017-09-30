@@ -1,11 +1,25 @@
 @import './mixins';
 
-$color-motive: purple;
-$color-hover: #dddddd;
-$color-text: rgba(0,0,0,0.87);
-$color-bg: #f2f2f2;
-$col-sm: 576px;
-$col-md: 768px;
+$box-shadow-default: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+$box-shadow-pagination: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
 $col-lg: 992px;
+$col-md: 768px;
+$col-sm: 576px;
 $col-xl: 1200px;
+$color-action: #F9A825;
+$color-bg: #f2f2f2;
+$color-create: #2E7D32;
+$color-danger: #cd0000;
+$color-gray-light: #F2F2F2;
+$color-gray-medium: lighten(#bdc3c7, 10%);
+$color-gray: #979797;
+$color-hover: #dddddd;
+$color-info: #0000ff;
+$color-motive: purple;
+$color-primary: #428bca;
+$color-success: #3ca241;
+$color-text: rgba(0,0,0,0.87);
 $height-navbar: 60px;
+$margins: (0, 5, 10, 15, 20, 30);
+//
+$color-danger-light: lighten($color-danger, 30%);

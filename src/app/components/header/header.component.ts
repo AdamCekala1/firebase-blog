@@ -13,7 +13,8 @@ export class HeaderComponent {
     {link: '', linkReadable: 'Start', icon: 'fa-home'},
     {link: CONSTANTS.ROUTING_URL.CALCULATOR, linkReadable: 'Kalkulator', icon: 'fa-calculator'},
     {link: CONSTANTS.ROUTING_URL.DIET, linkReadable: 'Przepisy', icon: 'fa-book'},
-    {link: CONSTANTS.ROUTING_URL.IGREDIENTS, linkReadable: 'Składniki', icon: 'fa-apple'}
+    {link: CONSTANTS.ROUTING_URL.IGREDIENTS, linkReadable: 'Składniki', icon: 'fa-apple'},
+    {link: CONSTANTS.ROUTING_URL.DIET_LOG, linkReadable: 'Dziennik', icon: 'fa-book'}
   ];
 
 }

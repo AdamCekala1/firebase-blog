@@ -5,3 +5,18 @@
   -o-transition: $element $time $mode;
   transition: $element $time $mode;
 }
+
+@mixin custom-button-color(
+  $color: #0000ff,
+  $color-hover: $color,
+  $color-opacity: 0.8,
+  $background-opacity: 0.06,
+  $background-hover-opacity: 0.3){
+  color: rgba($color, $color-opacity);
+  background: rgba($color, $background-opacity);
+
+  &:not(:disabled):hover{
+    color: $color-hover;
+    background: rgba($color, $background-hover-opacity);
+  }
+}

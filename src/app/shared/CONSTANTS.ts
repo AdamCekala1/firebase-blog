@@ -5,6 +5,7 @@ export class CONSTANTS {
   public static ROUTING_URL = {
     CALCULATOR: 'calculator',
     DIET: 'diet',
+    DIET_LOG: 'diet-log',
     IGREDIENTS: 'ingredients'
   };
 
